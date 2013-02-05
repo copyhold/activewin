@@ -1,0 +1,8 @@
+RewriteEngine on
+rewritebase /activewin
+errordocument 404 index.php?page=404
+rewriterule ^$ index.php?page=home [l,qsa]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+RewriteRule ^(about|home|testimonials|404|contact|all)$ index.php?page=$1 [L,QSA]
