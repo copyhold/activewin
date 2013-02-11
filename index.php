@@ -31,6 +31,19 @@ if (!isset($page , $tpl[$page])) {
 <script>
 var allpages, baseURL='/activewin/';
 $(function(){
+	var History = window.History;
+	if (!History.enabled) {
+		return false;
+	}
+	History.Adapter.bind(window,'statechange',function(){
+		var State = History.getState(),
+				nextArticle = $(State.data[2]);
+		$('body').removeClass().addClass(State.data[3]);
+		$('nav a').removeClass()
+		$('nav a[rel='+State.data[3]+']').addClass('active')
+		$('body>section>article').replaceWith(nextArticle);
+		nextArticle.delay(1000).animate({ opacity: 1 }, 500);
+	});
 	$.getJSON('all',function(data){
 		allpages = data
 		setInterval(function(){
@@ -59,19 +72,6 @@ $(function(){
 		
 		$('nav a[rel="'+$('body')[0].className+'"]').click();
 	})
-	var History = window.History;
-	if (!History.enabled) {
-		return false;
-	}
-	History.Adapter.bind(window,'statechange',function(){
-		var State = History.getState(),
-				nextArticle = $(State.data[2]);
-		$('body').removeClass().addClass(State.data[3]);
-		$('nav a').removeClass()
-		$('nav a[rel='+State.data[3]+']').addClass('active')
-		$('body>section>article').replaceWith(nextArticle);
-		nextArticle.delay(1000).animate({ opacity: 1 }, 500);
-	});
 
 })
 </script>
