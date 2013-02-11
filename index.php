@@ -61,8 +61,9 @@ $(function(){
 				onegoesleft.css('margin-left',0);
 			});
 		} , 3000); // rotate testimonials on home
-		$('a:not([href^=http])').click(function(){
+		$('a').click(function(){
 			var page = allpages[$(this).attr('rel')];
+			if (!page) return true;
 			var url = $(this).attr('rel');
 			page.push(url);
 			if (url==='home') url = '';
@@ -70,7 +71,8 @@ $(function(){
 			return false;
 		});
 		
-		$('nav a[rel="'+$('body')[0].className+'"]').click();
+		$('nav a[rel="'+$('body')[0].className+'"]').addClass('active');
+		$('#' + $('body')[0].className).css('opacity' ,1);
 	})
 
 })
