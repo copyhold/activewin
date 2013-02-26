@@ -58,8 +58,14 @@ $(function(){
 			var newPage =location.hash.substr(2); 
 			if (newPage==currentPage) return;
 			var allPagesIndex = newPage==='' ? 'home' : newPage;
+			if (typeof allpages[allPagesIndex]==='undefined') return false;
 			$('body').removeClass().addClass(allPagesIndex);
-			$('body>section>article:first').css
+			$('body>section').height($('#' + allPagesIndex).height() + 60);
+			var hroffset = allPagesIndex==='home' ? 0 : 60;
+			$('#' + allPagesIndex).prevAll('article').each(function(){
+				hroffset -= $(this).height();
+			})
+			$('section > hr').css('margin-top',hroffset);
 			currentPage = newPage;	
 		} , 100);	
 	})
