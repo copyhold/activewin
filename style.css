@@ -178,11 +178,23 @@ article#mobile,
 article#services {
 	background: url("data:image/gif;base64,R0lGODlhAQAcAYABALy8vP///ywAAAAAAQAcAQACD4SPqcvtD6OctNqLs96sAAA7") 0 0 repeat-x #f3f3f3;
 }
+article#clients {
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAEcCAIAAACJSEkvAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QIcBiIl6kDwwwAAABlJREFUOMtjWLhwARMDA8MoHsWjeBTTGgMARCAEGcCI97wAAAAASUVORK5CYII=") 0 0 repeat-x #f3f3f3;	
+}
 #services {
 	height: 772px;
 }
+#clients{
+	height: 935px;
+}
 #mobile {
 	height: 1078px;
+}
+#testemonials {
+	height: 278px;
+}
+#about {
+	height: 107px;
 }
 article > section > header {
 	height: 284px;
@@ -201,8 +213,17 @@ header h1 span {
 #services header {
 	background: url(images/service-h1.jpg) 0 0 no-repeat;
 }
+#clients header {
+	margin-left: -95px;
+	background: url(images/clients-h1.jpg) 0 0 no-repeat;
+}
 #mobile header {
 	background: url(images/mobile-h1.jpg) 0 0 no-repeat;
+}
+#clients h1 {
+margin: 176px 0 0 640px;
+font-size: 50px;
+line-height: 47px;
 }
 #services h1 {
 margin: 147px 0 0 490px;
@@ -222,8 +243,11 @@ line-height: 47px;
 	text-indent: 15px;
 	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAGCAYAAAAPDoR2AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QIaCC83g6KNEAAAAIRJREFUCNdj+PDxM3Pp4p8tnHH/vzFE/v+vV/b3/OlbX7U+f/7MwNCy5mcpQ+T//8hYJO3fq6evvvAzP5BsXPj+K6MQAxL49ouR21D+31mmH78YORmwgO+/GTiZQs1/L0OX4Gb//8VJ6+9uhrfvP7P5dv1eB7NPKvPfky2nvzl9/vyZAQBtNkfQkcO9wQAAAABJRU5ErkJggg==") 0 50% no-repeat;
 }
-#mobile .matrix li {
+.matrix.cols3 li {
 	width: 32%;
+}
+.matrix.cols1 li {
+	width: 99%;
 }
 nav {
 	position: absolute;
