@@ -93,6 +93,9 @@ $(function(){
 			$('title').text(allpages[allPagesIndex][0]);
 			currentPage = newPage;	
 		} , 100);	
+		setTimeout(function() { 
+			$('html').addClass('loaded');
+		}, 1000);
 	})
 
 })

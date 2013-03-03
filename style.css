@@ -7,7 +7,12 @@ body > section {
 	height: auto;
 	overflow: hidden;
 	position: relative;
-	-webkit-transition: height 700ms linear;
+}
+.loaded body > section,
+.loaded hr,
+.loaded nav {
+	transition: all 700ms ease-in-out;
+	-webkit-transition: all 700ms ease-in-out;
 }
 body.home > section {
 margin-top: 0;
@@ -94,7 +99,6 @@ hr {
 	width: 100%;
 	height: 0px;
 	margin: 0;
-	-webkit-transition: all 700ms ease-in-out;
 }
 .services > section {
 	height: 952px;
@@ -412,7 +416,6 @@ nav {
 	background: linear-gradient(to bottom,  rgba(56,56,56,1) 0%,rgba(5,5,5,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383838', endColorstr='#050505',GradientType=0 );
 	text-align: center;
-	-webkit-transition: all 700ms ease-in-out;
 }
 .home nav {
 	top: 570px;
