@@ -91,11 +91,13 @@ $(function(){
 				hroffset -= $(this).height();
 			});
 			$('nav a').removeClass('active');
-			$('nav a[href="' + location.hash + '"]').addClass('active');
+
+			$('nav a[href="' + location.hash + '"]').append($('#corner')).delay(1000).addClass('active');
 			$('section > hr').css('margin-top',hroffset);
 			$('title').text(allpages[allPagesIndex][0]);
 			currentPage = newPage;	
 		} , 100);	
+		$('nav').append($('<i id=corner />'))
 		setTimeout(function() { 
 			$('html').addClass('loaded');
 		}, 1000);
