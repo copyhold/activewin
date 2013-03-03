@@ -59,6 +59,7 @@ $(function(){
 		} , 5000); // rotate testimonials on home
 		$('form header i, .lb').click(function(){
 		$('body').removeClass('contact')
+		$('html,body').animate({ scrollTop: 0} , 1000);
 		})
 		$('form').submit(function(e){
 			e.preventDefault();
@@ -88,7 +89,9 @@ $(function(){
 			var hroffset = allPagesIndex==='home' ? 0 : 60;
 			$('#' + allPagesIndex).prevAll('article').each(function(){
 				hroffset -= $(this).height();
-			})
+			});
+			$('nav a').removeClass('active');
+			$('nav a[href=' + location.hash + ']').addClass('active');
 			$('section > hr').css('margin-top',hroffset);
 			$('title').text(allpages[allPagesIndex][0]);
 			currentPage = newPage;	
