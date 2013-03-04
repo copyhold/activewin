@@ -70,7 +70,7 @@ $(function(){
 			} else {
 				$('form').addClass('wait');
 				$.post('send.php',$('form').serialize(),function(d) {
-					$('form').removeClass().addClass('sent').append($('<p>').text('Your message has been sent successfully. We will get back to you as soon as possible.'));
+					$('form').removeClass().addClass('sent').append($('<p>').text('Your message has been sent successfully. We will get back to you as soon as possible.').fadeIn(700));
 				}, 'json');
 			}
 		});
