@@ -6,7 +6,7 @@ foreach(explode(' ','services mobile testimonials home about clients') as $f) {
 	$fp = fopen($filename,'r');
 	$tpl[$f] = [trim(fgetss($fp)),trim(fgetss($fp)),fread($fp,10000)];
 }
-$page = $_GET['page'];
+$page = $_GET['_escaped_fragment_'];
 
 if ($page=='all') {
 	unset($tpl['404']);
@@ -28,9 +28,9 @@ if (!isset($page , $tpl[$page])) {
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://raw.github.com/balupton/history.js/master/scripts/bundled/html4+html5/jquery.history.js"></script>
 <script>
-var allpages, baseURL='/activewin/', currentPage;
+var allpages, currentPage;
 $(function(){
-	$.getJSON('all',function(data){
+	$.getJSON('?_escaped_fragment_=all',function(data){
 		allpages = data
 		for (page in data) {
 			if (!data.hasOwnProperty(page)) continue;

@@ -1,8 +1,8 @@
 RewriteEngine on
 rewritebase /activewin
 errordocument 404 index.php?page=404
-rewriterule ^$ index.php?page=home [l,qsa]
+rewriterule ^$ index.php?_escaped_fragment_=home [l,qsa]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !=/favicon.ico
-RewriteRule ^(services|clients|about|home|testimonials|404|all)$ index.php?page=$1 [L,QSA]
+RewriteRule ^\?_escaped_fragmen=(.*)$ index.php?page=$1 [L,QSA]
