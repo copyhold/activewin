@@ -43,7 +43,7 @@ $(function(){
 			var testimonials = $(allpages.testimonials[2]).find('ul');
 				if (testimonialsRot.length===0) {
 				testimonialsRot = $('<DIV id=rotation />').append(testimonials.clone()).insertBefore('footer');
-				testimonialsRot.append('<i class=next>&gt;</i>').prepend('<i class=back>&lt;</i>');
+				testimonialsRot.append('<i class=next></i>').prepend('<i class=back></i>');
 				testimonialsRot.find('li').each(function() {
 					var author = $(this).find('cite').remove();
 					var text = $(this).text().replace('"','');
@@ -68,8 +68,9 @@ $(function(){
 			if ($('form .error').length>0) {
 				$('form button').addClass('error');
 			} else {
+				$('form').addClass('wait');
 				$.post('send.php',$('form').serialize(),function(d) {
-					$('form header i').click();
+					$('form').removeClass().addClass('sent').append($('<p>').text('Your message has been sent successfully. We will get back to you as soon as possible.'));
 				}, 'json');
 			}
 		});

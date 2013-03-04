@@ -1,4 +1,4 @@
 RewriteEngine on
 rewritebase /activewin
 errordocument 404 index.php?page=404
-rewriterule ^(\?_escaped_fragment_)?$ index.php?_escaped_fragment_=home [l,qsa]
+rewriterule ^$ index.php?_escaped_fragment_=home [l,qsa]
