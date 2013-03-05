@@ -55,7 +55,8 @@ $(function(){
 				testimonialsRot.append('<i class=next></i>').prepend('<i class=back></i>');
 				testimonialsRot.find('li').each(function() {
 					var author = $(this).find('cite').remove();
-					var text = $(this).text().replace('"','');
+					var text = $(this).attr('data-text');
+					if (!text) text = $(this).text().replace('"','');
 					$(this).empty().append($('<button />') , text.split(/[^A-Za-z0-9]/).splice(0,30).join(' ') , $('<button />') , author);
 				})
 				return;
