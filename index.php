@@ -35,7 +35,8 @@ document.createElement('ASIDE');
 document.createElement('HEADER');
 var allpages, currentPage;
 $(function(){
-	if (parseInt(navigator.appVersion.match(/MSIE (\d)/)[1])<9) {
+	var IE = navigator.appVersion.match(/MSIE (\d)/)
+	if (IE && parseInt(IE[1])<9) {
 		$('html').addClass('ie')
 	}
 	$.getJSON('?_escaped_fragment_=all',function(data){
