@@ -1,3 +1,4 @@
+header,footer,article,section,nav { display: block; }
 body {
 background: #2d2d2d;
 margin:0;
@@ -345,7 +346,7 @@ form button{
 	border: none;
 	font-weight: 900;
 }
-form button span {
+form span {
 	font-size: 12px;
 	display: none;
 	position: absolute;
@@ -361,9 +362,10 @@ form button span {
 	color: red;
 	white-space: nowrap;
 	margin-right: 10px;
-	right: 100%;
+	right: 120px;
+	top: 492px;
 }
-form .error span {
+form .error + span {
 	display: block;
 }
 label {
@@ -380,6 +382,7 @@ label > sup {
 }
 textarea,
 input {
+	overflow: hidden;
 	margin: 0  24px 0 10px;
 	height: 42px;
 	width: 393px;
@@ -391,6 +394,9 @@ input {
 	box-sizing: border-box;
 	border: none;
 	outline: none;
+}
+.ie input, .ie textarea {
+	border: 2px solid #ccc;
 }
 textarea {
 	resize: none;
