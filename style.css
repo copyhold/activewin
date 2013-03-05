@@ -1,15 +1,20 @@
 body {
-  background: #2d2d2d;
+background: #2d2d2d;
 margin:0;
-overflow-y: scroll;
+overflow-y:scroll;
 }
+a {
+	text-decoration: none;
+	outline: none;
+}
+a img { border: none; }
 body > section {
 	height: auto;
 	overflow: hidden;
 	position: relative;
 }
 .loaded body > section,
-.loaded hr,
+.loaded section article,
 .loaded nav {
 	transition: all 700ms ease-in-out;
 	-webkit-transition: all 700ms ease-in-out;
@@ -285,15 +290,10 @@ form {
 	left: 50%;
 	top: -1000px;
 	position: absolute;
-	transition: 500ms top ease-out;
-	-webkit-transition: 700ms top ease-in-out;
 	z-index: 1000;
 	border: 3px solid #909090;
 	border-radius: 4px;
 	box-shadow: 0 0 26px 1px rgba(0,0,0,0.6);
-}
-.contact form{
-	top: 200px
 }
 form.sent button,
 form.sent > label {
@@ -386,7 +386,7 @@ input {
 	float: right;
 	text-indent: 10px;
 	font-size: 20px;
-	box-shadow: 1px 1px 3px 0px #000 inset;
+	box-shadow: 1px 1px 3px 0px #999 inset;
 	border-radius: 15px;
 	box-sizing: border-box;
 	border: none;
