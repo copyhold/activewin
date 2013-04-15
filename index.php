@@ -23,9 +23,14 @@ if (!isset($page , $tpl[$page])) {
 <head>
 <title><?php echo $tpl[$page][0];?></title>
 <meta name=description value="<?php echo $tpl[$page][1];?>" />
+<meta http-equiv="X-UA-Compatible" content=" chrome=1" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:700,400,900' rel='stylesheet' type='text/css'>
 <link href='style.css' rel='stylesheet' type='text/css'>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src='//google.com/tools/dlpage/res/chromeframe/script/CFInstall.min.js'></script>
+<script>
+CFInstall.require();
+</script>
 <script>
 document.createElement('SECTION');
 document.createElement('NAV');
@@ -47,30 +52,58 @@ $(function(){
 		}
 		$('body>section>article:first').remove();
 
-		setInterval(function(){
-			var testimonialsRot = $('#rotation');
-			var testimonials = $(allpages.testimonials[2]).find('ul');
-				if (testimonialsRot.length===0) {
-				testimonialsRot = $('<DIV id=rotation />').append(testimonials.clone()).insertBefore('footer');
-				testimonialsRot.append('<i class=next></i>').prepend('<i class=back></i>');
+		var Testi = function(){
+			var testimonials;
+			var pause = false;
+
+			function moveLeft(e) {
+				if (pause && typeof e=='undefined') return;
+				var onegoesleft = testimonialsRot.find('li:eq(0)');
+				if (onegoesleft.is(':animated')) return;
+				onegoesleft.animate({"margin-left": "-900px"}, function(){
+					onegoesleft.parent().append(onegoesleft);
+					onegoesleft.css('margin-left',0);
+				});
+				setPause(typeof e=='object');
+			}
+			function moveRite(e) {
+				if (pause && typeof e=='undefined') return;
+				var onegoesrite = testimonials.find('li:last');
+				var onegoesleft = testimonials.find('li:eq(0)');
+				if (onegoesleft.is(':animated')) return;
+				onegoesrite.css('margin-left','-900px');
+				onegoesleft.parent().prepend(onegoesrite);
+				onegoesrite.animate({'margin-left':'0px'},function(){});
+				setPause(typeof e=='object');
+			}
+			function setPause(pauseme) {
+				if (!pauseme) return;
+				pause = true;
+				setTimeout(function() { pause = false; }, 5000);
+			}
+			var init = function(){
+				testimonialsRot = $('<DIV id=rotation />').append($(allpages.testimonials[2]).find('ul').clone()).insertBefore('footer');
+				testimonials = testimonialsRot.find('ul');
+				testimonialsRot.append($('<i class=next></i>').click(moveRite)).prepend($('<i class=back></i>').click(moveLeft));
 				testimonialsRot.find('li').each(function() {
 					var author = $(this).find('cite').remove();
 					var text = $(this).attr('data-text');
 					if (!text) text = $(this).text().replace('"','');
 					$(this).empty().append($('<button />') , text.split(/[^A-Za-z0-9]/).splice(0,30).join(' ') , $('<button />') , author);
 				})
-				return;
+				setInterval(moveLeft,5000);
 			}
-			var onegoesleft = testimonialsRot.find('li:eq(0)');
-			onegoesleft.animate({"margin-left": "-900px"}, function(){
-				onegoesleft.parent().append(onegoesleft);
-				onegoesleft.css('margin-left',0);
-			});
-		} , 5000); // rotate testimonials on home
+			return { init: init };
+		}
+		var testi = new Testi();
+		testi.init();
+
 
 		$('form header i, .lb').click(function(){
 			$('body').removeClass('contact');
 			$('form').animate({top: -1000},1000,function() {$('form').removeClass('sent')});
+			$('form>p').remove();
+			$('form input,form textarea').val('');
 			$('html,body').animate({ scrollTop: 0} , 1000);
 		})
 		$('form').submit(function(e){
